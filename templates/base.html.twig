@@ -3,10 +3,38 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+        	{# 'app' must match the first argument to addEntry() in webpack.config.js #}
+            {{ encore_entry_link_tags('app') }} 
+            <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Staatliches|Supermercado+One&display=swap" rel="stylesheet">	
+        {% endblock %}
     </head>
+    <header>
+        <nav class='navbar'>
+            <div class="welcome-cta">
+                <a href="{{ path('home')}}" class="pedro-machuca">PedroMachuca</a>
+            </div>
+            <div class='session-management'>
+            {% if app.user %}
+                <p class="username">{{ app.user.firstName }}</p>     
+                <a href="{{ path('app_logout') }}" class="logout-cta">Se déconnecter</a>       
+            {% endif %}
+            {% if app.user is null %}
+                <a href={{path('app_login') }} id='connect-cta' href=>Connection</a>
+                <a href={{ path('registration') }} >Inscription</a>        
+            {% endif %}
+            </div>
+        </nav>
+    </header>
     <body>
+
         {% block body %}{% endblock %}
+            {{ encore_entry_script_tags('app') }}
+
+            <!-- Renders app.js & a webpack runtime.js file
+                <script src="/build/runtime.js"></script>
+                <script src="/build/app.js"></script> -->
         {% block javascripts %}{% endblock %}
     </body>
 </html>
