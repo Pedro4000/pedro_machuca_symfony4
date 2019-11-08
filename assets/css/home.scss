@@ -1,0 +1,50 @@
+$koreus: #9f7ec0;
+
+.main-title{
+	background-color: $koreus;
+	font-weight: 50px;
+	border: 1px solid #111;
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+	margin: 0;
+	font-weight: 400;
+	padding: 5px 15PX;
+}
+
+.main-section-images{
+	background-color: white;
+    color: #cd3939;
+    height: 300px;
+    width: 300px;
+    border-radius: 20px;
+    padding: 40px;
+    &:hover{
+  	  pointer:cursor;
+  	  background-color: $koreus;
+  	  font-weight: 600;
+  	  transition: 300ms;
+    }
+}
+
+.what-section{
+	color :black;
+	font-size: 12px;
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+}
+
+.example-wrapper{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+}
+
+.click-to-go{
+	margin-top: 200px;
+}
+
+.click-to-go:hover{
+	transition: 300ms;
+	cursor: pointer;
+}

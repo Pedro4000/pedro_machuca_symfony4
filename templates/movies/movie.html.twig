@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div>
+	<h1 class="main-title">Bienvenu dans la section des films cher ami cinéphile</h1>
+</div>
+
+<div class="movie-informations">
+	<div class="movie-specs">
+		<p class="title"></p>
+		<p class="release-date">Année de sortie : </p>
+		<p class="synopsis">Résumé : </p>
+		<p class='rating'>Note IMDB : </p>
+		<div class="click">
+			<span class="fa fa-star-o"></span>
+			<div class="ring"></div>
+			<div class="ring2"></div>
+			<p class="info">Ajouté à vos films</p>
+		</div>
+		<div class='movie-{{id}} movie-id'>
+	</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<header>
+	<h1 class="main-title">Pas d'idées ? Viens digger</h1>
+	<p class="what-section"> Tu viens chercher quoi aujourd'hui ? du son ou des petit films bien chinés ?</p>
+</header>
+<div class="example-wrapper">
+    <div class="go-to-music click-to-go">
+    	<a href={{path('home_movies')}}>
+    		<img src="{{ asset('build/images/film-camera-roll.png')}}" class="main-section-images">
+    	</a>
+    </div>
+    <div class="go-to-films  click-to-go">
+    	<img src="{{ asset('build/images/vinyl.png')}}" class="main-section-images">
+    </div>
+</div>
+{% endblock %}

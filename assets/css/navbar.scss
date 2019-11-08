@@ -1,0 +1,67 @@
+.navbar{
+	font-family: Open-sans, Arial, sans-serif;
+	padding:10px, 5px;
+	display : flex ;
+	justify-content: space-between;
+	background-color: #333;
+	border: 1px solid #111;
+	margin: 0;
+	color: white !important;
+	padding : 8px 10px;
+	a:nth-child(2){
+		background-color: #52ab34;
+		&:hover{
+			background-color: #4ea332;
+		}
+	}
+	.welcome-cta{
+	    display: flex
+	}
+	.pedro-machuca{
+		font-family: 'Supermercado One', cursive;
+		&:hover{
+			color: #333 !important;
+			background-color: white;
+			transition: 200ms;
+		}
+	}
+	.session-management{
+		display:flex;
+	}
+
+	a{
+		padding: 5px 15px;
+		border-radius: 3px;
+		text-decoration: none;
+		color:white !important;
+		&:hover{
+			cursor: pointer; 
+		}
+	}
+	.logout-cta{
+		padding: 5px 15px;
+		border-radius: 3px;
+		text-decoration: none;
+		color:white !important;
+		background-color: #b0413e !important;
+		&:hover{
+			cursor: pointer; 
+			background-color: #943836 !important;
+			transition: 300ms;
+		}
+	}
+	#connect-cta{
+	}
+	.username{
+	    margin: 3px 15px;
+	    border: 1px solid darkgrey;
+	    padding: 1px 14px;
+	    &:hover{
+	    	cursor:pointer;
+	    }
+	}
+}
+
+.navbar>a{
+	color:white;
+}
