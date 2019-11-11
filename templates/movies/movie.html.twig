@@ -12,8 +12,8 @@
 		<p class="release-date">Année de sortie : </p>
 		<p class="synopsis">Résumé : </p>
 		<p class='rating'>Note IMDB : </p>
-		<div class="click">
-			<span class="fa fa-star-o"></span>
+		<div class="click {{  isCurrentMovieFavorite ? 'active active-2 active-3': '' }}">
+			<span class="fa {{  isCurrentMovieFavorite ? 'fa-star': 'fa-star-o' }}"></span>
 			<div class="ring"></div>
 			<div class="ring2"></div>
 			<p class="info">Ajouté à vos films</p>

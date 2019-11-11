@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FavoriteMovieRepository")
  */
@@ -19,7 +20,7 @@ class FavoriteMovie
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $the_movie_db_id;
+    private $theMovieDbId;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="products")
@@ -33,12 +34,12 @@ class FavoriteMovie
 
     public function getTheMovieDbId(): ?int
     {
-        return $this->the_movie_db_id;
+        return $this->theMovieDbId;
     }
 
-    public function setTheMovieDbId(?int $the_movie_db_id): self
+    public function setTheMovieDbId(?int $theMovieDbId): self
     {
-        $this->the_movie_db_id = $the_movie_db_id;
+        $this->theMovieDbId = $theMovieDbId;
 
         return $this;
     }
@@ -48,7 +49,7 @@ class FavoriteMovie
         return $this->user;
     }
 
-    public function setUserId(?User $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 

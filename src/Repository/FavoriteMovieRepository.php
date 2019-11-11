@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\FavoriteMovies;
+use App\Entity\FavoriteMovie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -16,7 +16,7 @@ class FavoriteMovieRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, FavoriteMovies::class);
+        parent::__construct($registry, FavoriteMovie::class);
     }
 
     // /**
@@ -36,15 +36,18 @@ class FavoriteMovieRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?FavoriteMovies
+    
+    public function checkIfMovieIsFavorite($id, $user)
     {
+
+        $id = intval($id);
         return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('f.user = :user')
+            ->andWhere('f.theMovieDbId = :movieId')
+            ->setParameter('user', $user)
+            ->setParameter('movieId', $id)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();     
     }
-    */
+    
 }

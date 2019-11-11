@@ -39,12 +39,12 @@ class UserRepository extends ServiceEntityRepository
     
     public function findOneFavoriteMovie($id): ?User
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.favoriteMovie = :movie_id')
-            ->setParameter('movie_id', $id)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        // return $this->createQueryBuilder('u')
+        //     ->andWhere('u.favoriteMovie = :movie_id')
+        //     ->setParameter('movie_id', $id)
+        //     ->getQuery()
+        //     ->getOneOrNullResult()
+        // ;
     }
     
 

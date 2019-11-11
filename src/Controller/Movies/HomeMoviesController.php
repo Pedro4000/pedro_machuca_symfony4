@@ -7,6 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\MovieManagerService;
 use App\Entity\User;
+use App\Entity\FavoriteMovie;
+use Symfony\Component\Security\Core\Security;
 
 class HomeMoviesController extends AbstractController
 {
@@ -15,30 +17,39 @@ class HomeMoviesController extends AbstractController
      */
     public function moviesIndex()
     {
-        return $this->render('movies/stats_stat_independent_t(arr1, arr2)x.html.twig', [
+        return $this->render('movies/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
 
 
     /**
-     * @Route("/movie/{id}", name="movie_page")e
+     * @Route("/movie/{id}", name="movie_page")
      */
     public function movieAction($id, Request $request, MovieManagerService $movieManager)
     {
 
         $user =$this->getUser();
         $em = $this->getDoctrine()->getManager();
-        $userRepo = $em->getRepository(User::class);
+        intval($id) == 0 ?  $movieId = intval($request->query->get('movie_id')) : $movieId= intval($id) ;
+
+        $favMovieRepo = $em->getRepository(FavoriteMovie::class);
+        $isCurrentMovieFavorite = $favMovieRepo->checkIfMovieIsFavorite($movieId, $user);
+        empty($isCurrentMovieFavorite) ? $isCurrentMovieFavorite = false : $isCurrentMovieFavorite = true ;
 
 
         if($request->isXmlHttpRequest()) {
-        $movieId = $request->get('movie_id');
-        dump($message=$movieManager->createMovieIfNotExisting($movieId));;die;
 
-
-
-
+            $id = $request->query->get('movie_id');
+            $specFavMovie = $favMovieRepo->checkIfMovieIsFavorite($id, $user);
+        
+           if($isCurrentMovieFavorite){
+                $em->remove($specFavMovie[0]);
+                $em->flush();
+            }
+            else{
+                $message=$movieManager->createMovieIfNotExisting($movieId);
+            }   
 
 
         }
@@ -46,7 +57,8 @@ class HomeMoviesController extends AbstractController
 
         return $this->render('movies/movie.html.twig', [
             'controller_name' => 'HomeController',
-            'id'=>$id
+            'id'=>$id,
+            'isCurrentMovieFavorite'=>$isCurrentMovieFavorite
         ]);
     }
 

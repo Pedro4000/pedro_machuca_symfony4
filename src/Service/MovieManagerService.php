@@ -2,18 +2,39 @@
 
 namespace App\Service;
 
+
+use App\Entity\User;
+use App\Entity\FavoriteMovie;
+use Symfony\Component\Security\Core\Security;
+use Doctrine\ORM\EntityManagerInterface;
+
+
 class MovieManagerService
 {
-    public function createMovieIfNotExisting()
-    {
-        $messages = [
-            'You did it! You updated the system! Amazing!',
-            'That was one of the coolest updates I\'ve seen all day!',
-            'Great work! Keep going!',
-        ];
 
-        $index = array_rand($messages);
+    public function __construct(Security $security, EntityManagerInterface $em){
 
-        return $messages[$index];
+        $this->security = $security;
+        $this->em = $em;
     }
+
+
+    public function createMovieIfNotExisting($id)
+    {
+
+        $currentUser =$this->security->getUser();
+        $favoriteMovie = new FavoriteMovie;
+        $favoriteMovie->setTheMovieDbId($id);
+        $favoriteMovie->setUser($currentUser);
+        $this->em->persist($favoriteMovie);
+        $this->em->flush();
+    }
+
+    public function deleteFavorite($favoriteMovie){
+
+        
+
+    }
+
+
 }
