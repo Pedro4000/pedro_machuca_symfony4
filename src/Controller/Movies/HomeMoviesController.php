@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Service\MovieManagerService;
 use App\Entity\User;
 use App\Entity\FavoriteMovie;
+use App\Entity\Comment;
 use Symfony\Component\Security\Core\Security;
 
 class HomeMoviesController extends AbstractController
@@ -37,6 +38,7 @@ class HomeMoviesController extends AbstractController
         $isCurrentMovieFavorite = $favMovieRepo->checkIfMovieIsFavorite($movieId, $user);
         empty($isCurrentMovieFavorite) ? $isCurrentMovieFavorite = false : $isCurrentMovieFavorite = true ;
 
+        // Gestion requete ajax pour ajouter/supprimer un favoris
 
         if($request->isXmlHttpRequest()) {
 
@@ -50,9 +52,12 @@ class HomeMoviesController extends AbstractController
             else{
                 $message=$movieManager->createMovieIfNotExisting($movieId);
             }   
-
-
         }
+
+        // Formulaire pour ajouter des commentaires
+
+        $comment = new Comment;
+
 
 
         return $this->render('movies/movie.html.twig', [
