@@ -27,16 +27,10 @@ $('.click').click(function() {
 })
 
 $('.click').click(function(){
-
-
 	$.ajax({
 	url: "{{ path('movie_page') }}",
 	data: {movie_id : parseInt($('.movie-id').attr('class').split(' ')[0].split('-')[1])}
 	});
-
-
-
-
 
 });
 

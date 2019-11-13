@@ -37,6 +37,14 @@ class Comment
      */
     private $movieDbId;
 
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +94,26 @@ class Comment
     public function setMovieDbId(int $movieDbId): self
     {
         $this->movieDbId = $movieDbId;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param mixed $createdAt
+     *
+     * @return self
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

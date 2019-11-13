@@ -30,7 +30,7 @@
 	}
 }
 
-.movie-informations{
+.movie-informations, .comment-section,{
 	margin: 50px;
     border: 1px solid #d8d8d8;
     padding: 10px 15px;
@@ -74,5 +74,55 @@ h4 {
 .fa-star-o:active{
 	transform: scale(0.9);
 	transition: 1000ms;
+
+}
+
+
+.comment-sizer{
+	width: 100%;
+	form{
+		width:inherit;
+	    display: flex;
+   		flex-wrap: wrap;
+   		justify-content: flex-end;
+		input{
+			width: inherit;
+			border-radius : 4px;
+		}
+	}
+}
+
+#comment_content{
+	padding : 10px 50px 10px 10px;
+}
+
+.send-comment{
+	background-color: #52ab34;
+    border-radius: 5px;
+    box-shadow: none;
+    padding: 6px 10px;
+    border: 1px solid #52ab34;
+    color: white;
+    margin: 10px 0;
+
+    &:hover{
+    	background-color: #478c30;
+	}
+}    
+
+.one-comment{
+	margin: 15px 50px;
+    border: 1px solid #d8d8d8;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.fav-un{    
+	font-family: "Font Awesome 5 Pro";
+    font-weight: 400 !important;
+    font-size: 30px;
+    margin: 12px;
+    margin-left: 47px;
+    margin-top: 2%;
 
 }

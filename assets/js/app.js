@@ -24,3 +24,4 @@ const $ = require('jquery');
 // import ReactDOM from 'react-dom'
 import Greet from './apifilm';
 import Favorite from './favorite';
+import './dommanagement';

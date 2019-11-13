@@ -9,41 +9,7 @@ if($('.movie-informations')){
 	getmovieinformation();
 }
 
-
-// $('.entrer').on('click', researchfilm);
-// $(document).on('click', '.results-section li p', getmovieinformation);
-// $('#pet-select').on('change',changegenre);
-
-// function changegenre(){
-// 	var genre=$('#pet-select').val();
-// 	var clef='http://api.themoviedb.org/3/discover/movie?api_key='+API_KEY+'&with_genres='+genre;
-// 	console.log(clef);
-// 	$.getJSON(clef,displaytrendingmovies);
-// }
-
-// function getgenre(response){
-// console.log(response);
-// }
-
-// researchfilmstrendingintheatres();
-
-
-// function researchfilm() {
-// 	var recherche= cool.value;
-// 	var clef='https://api.themoviedb.org/3/search/movie?api_key='+API_KEY+'&language=en-US&query='+recherche+'&page=1&include_adult=false';
-// 	$.getJSON(clef, recupFilm);
-// }
-
-
-// function recupFilm(response) {
-// 	var list = $('<ul>');
-//  	for (var i = 0 ; i < response.results.length; i++) {
-// 	 		var li = $('<li>');
-
-// 	 		list.append(li.append('<p data-id="'+response.results[i].id+'">'+response.results[i].original_title+'</p>'));	
-//  	}
-//  	$('.trending-section').html(list);
-// }
+ 
 
 
 

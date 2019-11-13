@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\FavoriteMovie;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -53,7 +54,7 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->favoriteMovies = new ArrayCollection();
     }
 
 
