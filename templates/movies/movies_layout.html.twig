@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+{% endblock %}
+
+{% block researchBar %}
+
+{{ render(controller('App\\Controller\\Movies\\HomeMoviesController::researchMovieAction' )) }}
+{% endblock %}
+
+{% block body %}
+{% endblock %}

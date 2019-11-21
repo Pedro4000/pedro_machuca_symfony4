@@ -4,6 +4,11 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    discogs_consumer_key: 'PYDdXlmkcDNhjeEhCCCn'
+    discogs_consumer_secret: 'ITqplUEarwgHHwIuMwBbbDywfOwUZlWW'
+    discogs_request_token_url: 'https://api.discogs.com/oauth/request_token'
+    discogs_authorize_url: 'https://www.discogs.com/oauth/authorize'
+    discogs_access_token_url:  'https://api.discogs.com/oauth/access_token'
 
 services:
     # default configuration for services in *this* file

@@ -1,0 +1,29 @@
+{% extends 'movies/movies_layout.html.twig' %}
+{% block title %}{% endblock %}
+
+{% block researchBar %}
+	{{ parent()}}
+{% endblock %}
+
+{% block body %}
+{# 	<div>
+		{{ dump(theMovieDbResponse)}}
+	</div> #}
+		{% for movie in theMovieDbResponse.results %}
+			<div class="movie-informations">
+				<a href='{{ path('movie_page', {'id': movie.id} ) }}'>
+{# 					{{ dump(remote_file_exists('https://image.tmdb.org/t/p/w185_and_h278_bestv2/' ~ movie.poster_path|remote_file_exists)) }} #}
+{# 					<img src="{{ ('https://image.tmdb.org/t/p/w185_and_h278_bestv2/' ~ movie.poster_path)|remote_file_exists }}" alt="{{ asset('build/images/empty.jpg')}}'"> #}
+					<img src="{{ ('fezfezfezf')|remote_file_exists }}">
+
+				</a>
+				<p>{{ movie.overview|remote_file_exists }}</p>
+				<div class="movie-specs">
+					<a href='{{ path('movie_page', {'id': movie.id} ) }}'><p class="title">{{ movie.title}}</p></a>
+					<p class="release-date">Année de sortie : {{ movie.release_date|split('-')[0] }}</p>
+					<p class="synopsis">Résumé : {{ movie.overview }}</p>
+					<p class='rating'>Note IMDB : {{ movie.vote_average }} </p>
+				</div>
+			</div>
+		{% endfor %}
+{% endblock %}

@@ -11,15 +11,29 @@ use App\Entity\FavoriteMovie;
 use App\Entity\Comment;
 use Symfony\Component\Security\Core\Security;
 use App\Form\CommentType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
 class HomeMoviesController extends AbstractController
 {
+
+    public function __construct(){
+        $this->api_key = "2ee2c5b569240ea2a2a879dd9c8a822c";
+    }
+
+
     /**
      * @Route("/movies", name="home_movies")
      */
-    public function moviesIndex()
+    public function moviesIndex(Request $request)
     {
+        $masterRequest = $this->container->get('request_stack')->getMasterRequest();
+
+
+
+
+
+
         return $this->render('movies/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);
@@ -95,6 +109,55 @@ class HomeMoviesController extends AbstractController
             'comments'=>$allComments
         ]);
     }
+
+    public function researchMovieAction(Request $request)
+    {
+
+        $recherche = ['recherche', 'rien'];
+        $researchForm = $this->createFormBuilder($recherche)
+            ->setAction($this->generateUrl('research_movie'))
+            ->setMethod('GET')
+            ->add('research', TextType::class, [
+                'attr'=>[
+                    'class'=> 'bla',
+                    'placeholder'=> 'Rechercher un film'
+                    ],
+                ])
+            ->getForm();
+
+
+        return $this->render('movies/search_movie.html.twig', [
+            'numeroro'=>$numeroro=5,
+            'researchForm'=>$researchForm->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/movies/research", name="research_movie")
+     */    
+    public function renderMovieResearchAction(Request $request)
+    {
+
+
+        $masterRequest = $this->container->get('request_stack')->getMasterRequest();
+        $recherche = $request->query->get('form')['research'];
+
+        $url = "https://api.themoviedb.org/3/search/movie?api_key=2ee2c5b569240ea2a2a879dd9c8a822c&query=".$recherche."";
+        $theMovieDbResponse = json_decode(file_get_contents($url));
+
+
+
+
+        return $this->render('movies/research.html.twig', [
+            'numeroro'=>$numeroro=5,
+            'theMovieDbResponse'=>$theMovieDbResponse
+
+        ]);
+
+
+
+    }
+
 
 
 }

@@ -29,7 +29,8 @@
         </nav>
     </header>
     <body>
-
+        {% block researchBar %}
+        {% endblock %}
         {% block body %}{% endblock %}
             {{ encore_entry_script_tags('app') }}
 

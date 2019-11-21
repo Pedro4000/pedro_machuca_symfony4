@@ -4,8 +4,11 @@ var API_KEY = '2ee2c5b569240ea2a2a879dd9c8a822c';
 var cool=document.querySelector('.rech');
 var clef="https://api.themoviedb.org/3/trending/movie/week?api_key="+API_KEY;
 
-$.getJSON(clef,displaytrendingmovies);
-if($('.movie-informations')){
+
+if($(".movie-display-section").length){
+	$.getJSON(clef,displaytrendingmovies);
+}
+if($('.movie-informations').length){
 	getmovieinformation();
 }
 
@@ -14,7 +17,6 @@ if($('.movie-informations')){
 
 
 function getmovieinformation(){
-	console.log($('.movie-id').attr('class'));
 	let movieIndex = parseInt($('.movie-id').attr('class').split(' ')[0].split('-')[1]);
   	$('.movie-information').removeClass('hide');
 	var clef2 ='https://api.themoviedb.org/3/movie/'+movieIndex+'?api_key='+API_KEY+'';
@@ -23,7 +25,6 @@ function getmovieinformation(){
 
 
 function loadmovieinformation(response){
-	console.log(response);
 	var list = $('.movie-informations');
 	var imglink = '<a><img src=https://image.tmdb.org/t/p/w185_and_h278_bestv2/'+response.poster_path+'></a>'
 	$('.movie-informations').prepend(imglink);

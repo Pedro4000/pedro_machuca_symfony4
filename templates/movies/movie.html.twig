@@ -1,51 +1,52 @@
-{% extends 'base.html.twig' %}
+{% extends 'movies/movies_layout.html.twig' %}
 {% block title %}Hello HomeController!{% endblock %}
 
-{% block body %}
-<div>
-	<h1 class="main-title">Bienvenu dans la section des films cher ami cinéphile</h1>
-</div>
 
-<div class="movie-informations">
-	<div class="movie-specs">
-		<p class="title"></p>
-		<p class="release-date">Année de sortie : </p>
-		<p class="synopsis">Résumé : </p>
-		<p class='rating'>Note IMDB : </p>
-		{% if app.user %}
-		<div class="click {{  isCurrentMovieFavorite ? 'active active-2 active-3': '' }}">
-			<span class="fa {{  isCurrentMovieFavorite ? 'fa-star': 'fa-star-o' }}"></span>
-			<div class="ring"></div>
-			<div class="ring2"></div>
-			<p class="info">Ajouté à vos films</p>
-		</div>
-		{% else %}
-			<a href="{{ path('app_login') }}"><i class="fas fa-star fav-un"></i></a>
-		{% endif %}
-		<div class='movie-{{id}} movie-id'>
+
+{% block body %}
+	<div>
+	</div>
+
+	<div class="movie-informations">
+		<div class="movie-specs">
+			<p class="title"></p>
+			<p class="release-date">Année de sortie : </p>
+			<p class="synopsis">Résumé : </p>
+			<p class='rating'>Note IMDB : </p>
+			{% if app.user %}
+			<div class="click {{  isCurrentMovieFavorite ? 'active active-2 active-3': '' }}">
+				<span class="fa {{  isCurrentMovieFavorite ? 'fa-star': 'fa-star-o' }}"></span>
+				<div class="ring"></div>
+				<div class="ring2"></div>
+				<p class="info">Ajouté à vos films</p>
+			</div>
+			{% else %}
+				<a href="{{ path('app_login') }}"><i class="fas fa-star fav-un"></i></a>
+			{% endif %}
+			<div class='movie-{{id}} movie-id'>
+			</div>
 		</div>
 	</div>
-</div>
-<div class='comment-section'>
-	<div class='comment-sizer'>
-		{{ form_start(commentForm)}}
-		{{ form_widget(commentForm.content)}}
-		{% if app.user is not null %}
-			<button type="submit" class="send-comment">Ajouter un commentaire</button>
-		{% else %}
-			<button class="send-comment" id="prevent-comment" type="button">Ajouter un comentaire</button>
-		{% endif %}
-		{{form_end(commentForm , {'render_rest': false } ) }}
-	</div>
-</div>
-<div class='comment-list-section'>
-	{% for comment in comments %}
-		<div class="one-comment">
-			<p>{{comment.user.firstName}}</p>
-			<p> {{comment.content}}</p>
-			<p>Le {{ comment.createdAt|date('d/m/Y')}} à {{ comment.createdAt|date('H:i') }}</p>
+	<div class='comment-section'>
+		<div class='comment-sizer'>
+			{{ form_start(commentForm)}}
+			{{ form_widget(commentForm.content)}}
+			{% if app.user is not null %}
+				<button type="submit" class="send-comment">Ajouter un commentaire</button>
+			{% else %}
+				<button class="send-comment" id="prevent-comment" type="button">Ajouter un comentaire</button>
+			{% endif %}
+			{{form_end(commentForm , {'render_rest': false } ) }}
 		</div>
-	{% endfor %}
-</div>
+	</div>
+	<div class='comment-list-section'>
+		{% for comment in comments %}
+			<div class="one-comment">
+				<p>{{comment.user.firstName}}</p>
+				<p> {{comment.content}}</p>
+				<p>Le {{ comment.createdAt|date('d/m/Y')}} à {{ comment.createdAt|date('H:i') }}</p>
+			</div>
+		{% endfor %}
+	</div>
 
 {% endblock %}
